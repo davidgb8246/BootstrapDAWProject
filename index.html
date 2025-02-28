@@ -21,7 +21,7 @@
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <input class="form-control" type="text" placeholder="Buscar por..." aria-label="Buscar por..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -76,7 +76,7 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Número de usuarios</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="user-counter" href="#">Unknown</span>
+                                        <span class="h4 mb-0 text-white" id="user-counter"></span>
                                         <div class="small text-white"><i class="fas fa-solid fa-users"></i></div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Usuarios pendientes de aprobación</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="user-counter" href="#">Unknown</span>
+                                        <span class="h4 mb-0 text-white" id="pendingUser-counter"></span>
                                         <div class="small text-white"><i class="fas fa-solid fa-person-circle-question"></i></div>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Publicaciones</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="user-counter" href="#">Unknown</span>
+                                        <span class="h4 mb-0 text-white" id="publications-counter"></span>
                                         <div class="small text-white"><i class="fas fa-solid fa-file"></i></div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">Publicaciones bloqueadas</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="user-counter" href="#">Unknown</span>
+                                        <span class="h4 mb-0 text-white" id="blockedPublications-counter"></span>
                                         <div class="small text-white"><i class="fas fa-solid fa-file-circle-exclamation"></i></div>
                                     </div>
                                 </div>
@@ -183,7 +183,9 @@
 
         <script src="js/init.js"></script>
         <script src="js/scripts.js"></script>
-        <script src="js/adminList.js"></script>
+
+        <script src="js/index.js"></script>
+
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
     </body>
