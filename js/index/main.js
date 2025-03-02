@@ -21,22 +21,29 @@ const buildAdminTable = () => {
     const adminListTable = document.getElementById('adminListTable');
     if (!adminListTable) return;
     
-    const admins = appData.users
+    const users = appData.users
         .filter(({ admin }) => admin)
-        .map(({ name, position, office, age, start_date, salary }) => [
-            name,
-            position,
-            office,
-            age ? age : "Desconocida",
-            start_date,
-            salary
-        ]);
+        .map(({ firstName, lastName, email, birthDate, country, city }) => {
+            const birthDateFormatted = birthDate ? new Date(birthDate).toLocaleDateString() : "Desconocida";
+            const countryFormatted = country ? country : "Desconocido";
+            const cityFormatted = city ? city : "Desconocida";
 
-    new simpleDatatables.DataTable(adminListTable, {
+            return [
+                `${firstName} ${lastName}`.trim(),
+                email,
+                birthDateFormatted,
+                countryFormatted,
+                cityFormatted
+            ];
+        });
+
+    const dataTable = new simpleDatatables.DataTable(adminListTable, {
         data: {
-            headings: ["Nombre", "Puesto", "Oficina", "Edad", "Fecha Inicio", "Salario"],
-            data: admins
+            headings: ["Nombre Completo", "Email", "Fecha nacimiento", "Pais", "Ciudad"],
+            data: users
         },
+        perPage: 2,
+        perPageSelect: [2, 4, 10, 15, 25, 50],
         labels: {
             placeholder: "Buscar",
             perPage: "Entradas por página",
@@ -45,4 +52,22 @@ const buildAdminTable = () => {
             noResults: "No se encontraron resultados.",
         },
     });
+
+    const applyBlockedClass = () => {
+        document.querySelectorAll("#adminListTable tbody tr").forEach(row => {
+            const email = row.children[1]?.textContent.trim();
+            const user = appData.users.find(user => user.email === email);
+            
+            if (user?.blocked) {
+                row.classList.add("blocked-user");
+            } else {
+                row.classList.remove("blocked-user");
+            }
+        });
+    };
+
+    applyBlockedClass();
+
+    dataTable.on('datatable.page', applyBlockedClass);
+    dataTable.on('datatable.update', applyBlockedClass);
 };

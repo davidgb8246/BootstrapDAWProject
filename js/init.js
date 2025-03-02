@@ -12,8 +12,8 @@ let appData = {
             lastName: "G.B.",
             email: "david@css-es-poesia.net",
             birthDate: "2005-10-13",
-            country: "Desconocido",
-            city: "Desconocido",
+            country: null,
+            city: null,
             password: "c2b6161a5690716f4136ddba1ae607d6adae10c061b99a4533931990aa4b8b4a",
 
             admin: true,
@@ -27,8 +27,8 @@ let appData = {
             lastName: "M.G.",
             email: "irene@css-es-poesia.net",
             birthDate: null,
-            country: "Desconocido",
-            city: "Desconocido",
+            country: null,
+            city: null,
             password: "0ea393c6876a3000b5779fdb356ced6a365d369ccddc534ed1ee5989b4efb972",
 
             admin: true,
@@ -42,8 +42,8 @@ let appData = {
             lastName: "R.G.",
             email: "carlos@css-es-poesia.net",
             birthDate: null,
-            country: "Desconocido",
-            city: "Desconocido",
+            country: null,
+            city: null,
             password: "e7c5e4e687eba0c36d42eb00e0b4779d98247b1932fbfa85d2eea25332ba2525",
 
             admin: false,

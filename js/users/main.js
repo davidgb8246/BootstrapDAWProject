@@ -279,8 +279,8 @@ window.editUser = (email) => {
     document.getElementById('editUserLastName').value = user.lastName;
     document.getElementById('editUserEmail').value = user.email;
     document.getElementById('editUserBirthDate').value = user.birthDate;
-    document.getElementById('editUserCountry').value = user.country;
-    document.getElementById('editUserCity').value = user.city;
+    document.getElementById('editUserCountry').value = user.country ? user.country : "";
+    document.getElementById('editUserCity').value = user.city ? user.city : "";
     document.getElementById('editUserPassword').value = "";
     document.getElementById('editUserConfirmPassword').value = "";
     document.getElementById('editUserAdmin').checked = user.admin;
@@ -294,8 +294,8 @@ window.editUser = (email) => {
         user.lastName = document.getElementById('editUserLastName').value;
         user.email = document.getElementById('editUserEmail').value;
         user.birthDate = document.getElementById('editUserBirthDate').value;
-        user.country = document.getElementById('editUserCountry').value;
-        user.city = document.getElementById('editUserCity').value;
+        user.country = document.getElementById('editUserCountry').value ? document.getElementById('editUserCountry').value : null;
+        user.city = document.getElementById('editUserCity').value ? document.getElementById('editUserCity').value : null;
 
         const pass = document.getElementById('editUserPassword').value;
         const confirmPass = document.getElementById('editUserConfirmPassword').value;
