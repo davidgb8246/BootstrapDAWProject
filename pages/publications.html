@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Panel de control - BlogMaster</title>
+        <title>Publicaciones - BlogMaster</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="css/styles-base.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles-base.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -45,15 +45,15 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Main</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="../index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Panel de control
                             </a>
-                            <a class="nav-link" href="pages/users.html">
+                            <a class="nav-link" href="users.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-users"></i></div>
                                 Usuarios
                             </a>
-                            <a class="nav-link" href="pages/publications.html">
+                            <a class="nav-link" href="publications.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-file"></i></div>
                                 Publicaciones
                             </a>
@@ -68,75 +68,18 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Panel de Administración</h1>
+                        <h1 class="mt-4">Listado de publicaciones</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Admin</li>
+                            <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
+                            <li class="breadcrumb-item active">Publicaciones</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Número de usuarios</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="user-counter"></span>
-                                        <div class="small text-white"><i class="fas fa-solid fa-users"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Usuarios pendientes de aprobación</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="pendingUser-counter"></span>
-                                        <div class="small text-white"><i class="fas fa-solid fa-person-circle-question"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Publicaciones</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="publications-counter"></span>
-                                        <div class="small text-white"><i class="fas fa-solid fa-file"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Publicaciones bloqueadas</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <span class="h4 mb-0 text-white" id="blockedPublications-counter"></span>
-                                        <div class="small text-white"><i class="fas fa-solid fa-file-circle-exclamation"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Visitas del mes anterior
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Visitas del último semestre
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Listado de administradores
+                                Listado de publicaciones
                             </div>
                             <div class="card-body">
-                                <table id="adminListTable">
+                                <table id="publicationsListTable">
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
@@ -185,12 +128,9 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
-        <script src="js/init.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="../js/init.js"></script>
+        <script src="../js/scripts.js"></script>
 
-        <script src="js/index/main.js"></script>
-
-        <script src="js/index/lastMonthStatisticsChart.js"></script>
-        <script src="js/index/lastSemesterStatisticsChart.js"></script>
+        <script src="../js/publications/main.js"></script>
     </body>
 </html>
