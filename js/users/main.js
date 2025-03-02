@@ -10,29 +10,29 @@ const buildUsersTable = () => {
     if (!usersListTable) return;
     
     const users = appData.users
-        .map(({ firstName, lastName, email, admin, blocked }) => [
+        .map(({ id, firstName, lastName, email, admin, blocked }) => [
             `${firstName} ${lastName}`.trim(),
             email,
             admin ? "Sí" : "No",
             `<div class="d-grid gap-2 d-md-block">
                 <div class="row">
                     <div class="col-12 col-md-6 mb-1">
-                        <button class="btn btn-primary btn-sm w-100" onclick="viewUser('${email}')">Ver publicaciones</button>
+                        <button class="btn btn-primary btn-sm w-100" onclick="viewUser('${id}')">Ver publicaciones</button>
                     </div>
                     <div class="col-12 col-md-6 mb-1">
-                        <button class="btn btn-secondary btn-sm w-100" onclick="editUser('${email}')">Editar</button>
+                        <button class="btn btn-secondary btn-sm w-100" onclick="editUser('${id}')">Editar</button>
                     </div>
                     ${
                         blocked ? 
                         `<div class="col-12 col-md-6 mb-1">
-                            <button class="btn btn-success btn-sm w-100" onclick="confirmAction('unblockUser', '${email}')">Desbloquear</button>
+                            <button class="btn btn-success btn-sm w-100" onclick="confirmAction('unblockUser', '${id}')">Desbloquear</button>
                         </div>` :
                         `<div class="col-12 col-md-6 mb-1">
-                            <button class="btn btn-warning btn-sm w-100" onclick="confirmAction('blockUser', '${email}')">Bloquear</button>
+                            <button class="btn btn-warning btn-sm w-100" onclick="confirmAction('blockUser', '${id}')">Bloquear</button>
                         </div>`
                     }
-                    <div class="col-12 col-md-6">
-                        <button class="btn btn-danger btn-sm w-100" onclick="confirmAction('deleteUser', '${email}')">Eliminar</button>
+                    <div class="col-12 col-md-6 mb-1">
+                        <button class="btn btn-danger btn-sm w-100" onclick="confirmAction('deleteUser', '${id}')">Eliminar</button>
                     </div>
                 </div>
              </div>`
@@ -249,6 +249,7 @@ const createAddUserModal = () => {
 
     document.getElementById('saveNewUserButton').onclick = async () => {
         const newUser = {
+            id: appData.users[appData.users.length - 1].id + 1,
             firstName: document.getElementById('addUserFirstName').value,
             lastName: document.getElementById('addUserLastName').value,
             email: document.getElementById('addUserEmail').value,
@@ -260,7 +261,7 @@ const createAddUserModal = () => {
             blocked: document.getElementById('addUserBlocked').checked,
         };
 
-        appData.users.push(newUser);
+        appData.users = [...appData.users, newUser];
         updateAppDataInStorage();
         window.location.reload();
     };
@@ -271,8 +272,8 @@ const showAddUserModal = () => {
     modal.show();
 };
 
-window.editUser = (email) => {
-    const user = appData.users.find(user => user.email === email);
+window.editUser = (id) => {
+    const user = appData.users.find(user => user.id == id);
     if (!user) return;
 
     document.getElementById('editUserFirstName').value = user.firstName;
@@ -321,19 +322,18 @@ window.editUser = (email) => {
     };
 };
 
-window.viewUser = (email) => {
-    // Custom code for viewing user
-    console.log(`Viewing user with email: ${email}`);
+window.viewUser = (id) => {
+    window.location.href = `publications.html?authorId=${id}&profile=true`;
 };
 
-window.deleteUser = (email) => {
-    appData.users = appData.users.filter(user => user.email !== email);
+window.deleteUser = (id) => {
+    appData.users = appData.users.filter(user => user.id != id);
     updateAppDataInStorage();
     window.location.reload();
 };
 
-window.blockUser = (email) => {
-    const user = appData.users.find(user => user.email === email);
+window.blockUser = (id) => {
+    const user = appData.users.find(user => user.id == id);
     if (!user) return;
 
     user.blocked = true;
@@ -342,8 +342,8 @@ window.blockUser = (email) => {
     window.location.reload();
 };
 
-window.unblockUser = (email) => {
-    const user = appData.users.find(user => user.email === email);
+window.unblockUser = (id) => {
+    const user = appData.users.find(user => user.id == id);
     if (!user) return;
 
     user.blocked = false;

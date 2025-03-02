@@ -53,7 +53,41 @@ let appData = {
     userLoggedIn: {
         id: 1,
     },
-    publications: [],
+    publications: [
+        {
+            id: 1,
+            authorId: 1,
+            contentFile: "pages/publications/image-formats.html",
+            blocked: false,
+
+            title: "Formatos de imagen",
+            summary: "Los formatos de imagen más comunes en la web son JPEG, PNG y GIF. Pero hay más.",
+            publicationDate: "2024-09-25",
+            lastUpdateDate: "2025-02-14",
+        },
+        {
+            id: 2,
+            authorId: 1,
+            contentFile: "pages/publications/css-properties-images.html",
+            blocked: false,
+
+            title: "Propiedades CSS para imágenes",
+            summary: "Las imágenes en la web pueden ser personalizadas con CSS. Aquí te muestro cómo.",
+            publicationDate: "2022-01-01",
+            lastUpdateDate: "2023-04-13",
+        },
+        {
+            id: 3,
+            authorId: 2,
+            contentFile: "pages/publications/css-filters.html",
+            blocked: true,
+
+            title: "Filtros CSS",
+            summary: "Los filtros CSS permiten modificar la apariencia de las imágenes y otros elementos.",
+            publicationDate: "2023-10-29",
+            lastUpdateDate: "2023-11-02",
+        },
+    ],
 };
 
 const updateAppDataInStorage = () => {
@@ -78,4 +112,13 @@ async function hashSHA256(text) {
     return hashHex;
 }
 
-// hashSHA256().then(console.log);
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    const queryObject = {};
+
+    params.forEach((value, key) => {
+        queryObject[key] = value;
+    });
+
+    return queryObject;
+}

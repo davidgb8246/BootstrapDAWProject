@@ -7,7 +7,14 @@
   overflow-x: hidden;
 }
 
-.blocked-user {
+.blocked-user,
+.blocked-publication {
   background-color: hsla(355, 100%, 50%, 0.2) !important;
+  color: #721c24 !important;
+}
+
+.blocked-user:hover,
+.blocked-publication:hover {
+  background-color: hsla(355, 100%, 50%, 0.4) !important;
   color: #721c24 !important;
 }
