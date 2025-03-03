@@ -255,3 +255,8 @@
 .footer-copyright-color {
   color: #4e4e4e !important;
 }
+
+.bg-warning {
+  --bs-bg-opacity: 1;
+  background-color: #967000 !important;
+}
