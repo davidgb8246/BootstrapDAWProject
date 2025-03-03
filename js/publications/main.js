@@ -216,7 +216,7 @@ window.viewPublication = (id) => {
     const publication = appData.publications.find(publication => publication.id == id);
     if (!publication) return;
 
-    window.location.href = publication.contentFile;
+    window.location.href = `/${publication.contentFile}`;
 };
 
 window.blockPublication = (id) => {
