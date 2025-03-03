@@ -1,20 +1,107 @@
 window.addEventListener('DOMContentLoaded', event => {
+    buildProfilePage(); // Construye la página de perfil.
     buildPublicationsTable(); // Construye la tabla de publicaciones.
     createConfirmationModal(); // Create the confirmation modal
+    hideResetSortButton(); // Oculta el botón de resetear el orden de la tabla.
 });
+
+const buildProfilePage = () => {
+    const { authorId, profile } = getQueryParams();
+    const profileContainer = document.getElementById('profileContainer');
+    
+    if (!authorId || !profile) {
+        profileContainer.style.display = 'none';
+        return;
+    };
+
+    const author = appData.users.find(user => user.id == authorId);
+    if (!author) return;
+
+    const pageTitle = document.getElementById('pageTitle');
+    pageTitle.textContent = `Perfil de ${author.firstName} ${author.lastName}`;
+
+    const breadcrumbs = document.getElementById('breadcrumb');
+    breadcrumbs.innerHTML = `
+        <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
+        <li class="breadcrumb-item"><a href="users.html">Usuarios</a></li>
+        <li class="breadcrumb-item active">Perfil</li>
+    `;
+
+    const tableTitle = document.querySelector('#tableTitle');
+    tableTitle.textContent = "Publicaciones del usuario";
+
+    const userDataHtml = `
+        <hr class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre</h5>
+                        <hr>
+                        <p class="card-text">${author.firstName}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Apellidos</h5>
+                        <hr>
+                        <p class="card-text">${author.lastName}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Email</h5>
+                        <hr>
+                        <p class="card-text">${author.email}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Fecha de Nacimiento</h5>
+                        <hr>
+                        <p class="card-text">${new Date(author.birthDate).toLocaleDateString()}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">País</h5>
+                        <hr>
+                        <p class="card-text">${author.country ? author.country : "Desconocido"}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Ciudad</h5>
+                        <hr>
+                        <p class="card-text">${author.city ? author.city : "Desconocida"}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    profileContainer.innerHTML = userDataHtml + profileContainer.innerHTML + "<hr>";
+};
 
 const buildPublicationsTable = () => {
     const publicationsListTable = document.getElementById('publicationsListTable');
     if (!publicationsListTable) return;
 
-    const { authorId, profile } = getQueryParams();
+    const { authorId } = getQueryParams();
     const filteredPublications = authorId ? appData.publications.filter(publication => publication.authorId == authorId) : appData.publications;
     const sortedPublications = filteredPublications
         .sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate))
         .sort((a, b) => new Date(b.lastUpdateDate) - new Date(a.lastUpdateDate));
-
-    console.log(authorId);
-    console.log(profile);
 
     const publications = sortedPublications
         .map(({ id, authorId, blocked, title, publicationDate, lastUpdateDate }) => {
@@ -77,6 +164,20 @@ const buildPublicationsTable = () => {
     dataTable.on('datatable.page', applyBlockedClass);
     dataTable.on('datatable.update', applyBlockedClass);
 };
+
+const resetPublicationsSort = () => {
+    window.location.href = window.location.pathname;
+};
+
+const hideResetSortButton = () => {
+    const resetSortButton = document.getElementById('resetPublicationsSort');
+    if (!resetSortButton) return;
+
+    const { authorId, profile } = getQueryParams();
+    if (!authorId && !profile || authorId && profile || profile) {
+        resetSortButton.style.display = 'none';
+    }
+}
 
 const confirmAction = (action, email) => {
     const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));

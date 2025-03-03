@@ -68,15 +68,19 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Listado de publicaciones</h1>
-                        <ol class="breadcrumb mb-4">
+                        <h1 id="pageTitle" class="mt-4">Listado de publicaciones</h1>
+                        <ol id="breadcrumb" class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="../index.html">Admin</a></li>
                             <li class="breadcrumb-item active">Publicaciones</li>
                         </ol>
+                        <div class="mb-4" id="profileContainer"></div>
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Listado de publicaciones
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fas fa-table me-1"></i>
+                                    <span id="tableTitle">Listado de publicaciones</span>
+                                </div>
+                                <button class="btn btn-success" id="resetPublicationsSort" onclick="resetPublicationsSort()">Reiniciar</button>
                             </div>
                             <div class="card-body">
                                 <table id="publicationsListTable">
