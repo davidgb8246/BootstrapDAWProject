@@ -1,14 +1,14 @@
-# Redirect with a 401
-[[redirects]]
-from = "/*"
-to = "/pages/401.html"
-status = 401
-
 # Redirect with a 404
 [[redirects]]
 from = "/*"
 to = "/pages/404.html"
 status = 404
+
+# Redirect with a 401
+[[redirects]]
+from = "/*"
+to = "/pages/401.html"
+status = 401
 
 # Redirect with a 500
 [[redirects]]

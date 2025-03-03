@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Propiedades CSS para imágenes - BlogMaster</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../../css/styles-base.css" rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="full-height flex-column text-center">
+    <header class="header-center">
+        <h1>Propiedades CSS para imágenes</h1>
+    </header>
+    <main class="container mt-4 flex-grow-1">
+        <div class="card mb-4 pt-4 pb-4">
+            <div class="card-body-centered">
+                <h2 class="card-title">Imágenes y CSS</h2>
+                <p class="card-text">Propiedades de fondo (background)</p>
+                <p class="card-text">La propiedad <code>background-image</code> permite establecer una imagen como fondo de un elemento.</p>
+                <p class="card-text">En este ejemplo, hemos usado <code>background-size: cover</code> para que la imagen cubra todo el contenedor, y <code>background-position: center</code> para centrarla.</p>
+                <div class="width-50 background-example background-cover-center"></div>
+            </div>
+        </div>
+        <div class="card mb-4 pt-4 pb-4">
+            <div class="card-body-centered">
+                <h2 class="card-title">Background Attachment</h2>
+                <p class="card-text">La propiedad <code>background-attachment</code> determina si la imagen de fondo se desplaza con el contenido o permanece fija.</p>
+                <p class="card-text">Aquí, hemos usado <code>background-attachment: fixed</code> para que la imagen permanezca fija mientras se desplaza la página.</p>
+                <div class="width-50 background-example background-fixed"></div>
+            </div>
+        </div>
+        <div class="card mb-4 pt-4 pb-4">
+            <div class="card-body-centered">
+                <h2 class="card-title">Object View Box</h2>
+                <p class="card-text">La propiedad <code>object-view-box</code> permite definir un área de visualización específica para la imagen, similar a la propiedad <code>viewBox</code> en SVG.</p>
+                <p class="card-text">Ejemplo de zoom pasando el ratón</p>
+                <div class="width-50 mb-1rem" style="overflow: hidden;">
+                    <img class="view-box" src="../../src/imgs/example.jpg" alt="Ejemplo de zoom" style="width: 100%;">
+                </div>
+                <p class="card-text">Pasando el ratón sobre esta imagen, se hará un zoom centrado.</p>
+            </div>
+        </div>
+        <div class="card mb-4 pt-4 pb-4">
+            <div class="card-body-centered">
+                <h2 class="card-title">Objetos en CSS</h2>
+                <p class="card-text">Las propiedades <code>object-fit</code> y <code>object-position</code> permiten controlar cómo se ajusta una imagen dentro de su contenedor.</p>
+                <p class="card-text">Ejemplo de <code>object-fit: cover</code></p>
+                <div>
+                    <img class="width-50 object-fit-cover mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-fit cover">
+                </div>
+                <p class="card-text">Ejemplo de <code>object-fit: fill</code></p>
+                <div>
+                    <img class="width-50 object-fit-fill mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-fit fill">
+                </div>
+                <p class="card-text">Ejemplo de <code>object-fit: contain</code></p>
+                <div>
+                    <img class="width-50 object-fit-contain mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-fit contain">
+                </div>
+                <p class="card-text">Ejemplo de <code>object-fit: scale-down</code>, se ve igual que en <code>contain</code> pues la imagen es más grande que el contenedor</p>
+                <div>
+                    <img class="width-50 object-fit-scale-down mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-fit scale-down">
+                </div>
+                <p class="card-text">Paisaje con <code>object-position: left</code></p>
+                <div>
+                    <img class="width-50 object-position-left mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-position left">
+                </div>
+                <p class="card-text">Paisaje con <code>object-position: right</code></p>
+                <div>
+                    <img class="width-50 object-position-right mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-position right">
+                </div>
+                <p class="card-text">Paisaje con <code>object-position: top</code></p>
+                <div>
+                    <img class="width-50 object-position-top mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-position top">
+                </div>
+                <p class="card-text">Paisaje con <code>object-position: bottom</code></p>
+                <div>
+                    <img class="width-50 object-position-bottom mb-1rem" src="../../src/imgs/example.jpg" alt="Ejemplo de object-position bottom">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted" id="copyright">Copyright &copy; BlogMaster</div>
+                <div>
+                    <a href="#">Política de Privacidad</a>
+                    &middot;
+                    <a href="#">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <script src="../../js/init.js"></script>
+    <script src="../../js/publications/publication.js"></script>
+</body>
+</html>

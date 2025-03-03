@@ -16,7 +16,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: Array(cantidadDatos).keys().reduce((arr, n) => [ ...arr, `${mesesSiglas[(numeroMes - 1 + 12) % 12]} ${n + 1}`], []),
     datasets: [{
-      label: "Sessions",
+      label: "Sesiones",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",

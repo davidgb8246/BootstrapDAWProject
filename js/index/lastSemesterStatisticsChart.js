@@ -16,7 +16,7 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: Array(cantidadDatos).keys().reduce((arr, n) => [ meses[(mesActual - (n + 1) + 12) % 12], ...arr], []),
     datasets: [{
-      label: "Revenue",
+      label: "Sesiones",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
       data: Array(cantidadDatos).keys().reduce((arr) => [ ...arr, Math.floor(Math.random() * (maxDataRandom - minDataRandom + 1)) + minDataRandom], []),
