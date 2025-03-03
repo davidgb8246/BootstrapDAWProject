@@ -247,3 +247,11 @@
 .wd-100 {
   width: 100%;
 }
+
+.footer-link-color {
+  color: #034bbb;
+}
+
+.footer-copyright-color {
+  color: #4e4e4e !important;
+}
